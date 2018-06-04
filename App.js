@@ -7,14 +7,20 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload u git me famalam.</Text>
-        <Text>Shake your phone to open the developer menu and ting.</Text>
         <Button
           onPress={function() { alert("hello") }}
-          title="Thiss"
+          title="p"
           color="#841584"
-          accessibilityLabel="Learn more about this purple button"
+        />
+        <Button
+          onPress={function() { alert("hello") }}
+          title="e"
+          color="#841584"
+        />
+        <Button
+          onPress={function() { alert("hello") }}
+          title="n"
+          color="#841584"
         />
       </View>
     );
