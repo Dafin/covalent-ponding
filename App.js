@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, Button} from 'react-native';
-import {chain, filter, map} from 'lodash';
+import {chain, find, filter, map} from 'lodash';
 
 const Spot = ({frog, hasFrog, isCorrect, type, handleOnPress}) => {
   return (
     <View style={styles.spot}>
       <Button
-        onPress={handleOnPress}
+        onPress={() => handleOnPress(frog)}
         title={frog || ''}
         color="#841584"
       />
@@ -22,35 +22,29 @@ export default class App extends Component {
       spots: [
         {
           frog: 'e',
-          hasFrog: true,
           type: 'bank'
         },
         {
           frog: 'p',
-          hasFrog: true,
           type: 'bank'
         },
         {
           frog: 'n',
-          hasFrog: true,
           type: 'bank'
         },
         {
           frog: null,
           isCorrect: 'p',
-          hasFrog: false,
           type: 'pond'
         },
         {
           frog: null,
           isCorrect: 'e',
-          hasFrog: false,
           type: 'pond'
         },
         {
           frog: null,
           isCorrect: 'n',
-          hasFrog: false,
           type: 'pond'
         }
       ]
@@ -59,8 +53,37 @@ export default class App extends Component {
     this.handleOnPress = this.handleOnPress.bind(this);
   }
 
-  handleOnPress() {
-    alert(this.state.spots.length);
+  handleOnPress(frog) {
+    // if (frog === null) return 
+    if (!frog) return
+    
+    // var spots = this.state.spots;
+    const {spots} = this.state;
+    let newSpots = [];
+
+    // remove frog from spot that was clicked.
+    newSpots = map(spots, spot => {
+      if (spot.frog === frog) {
+        spot.frog = null;
+      }
+
+      return spot;
+    });
+
+    // add frog to first available empty spot.
+    let found = false;
+    newSpots = map(newSpots, spot => {
+      if (!spot.frog && !found && spot.type === 'pond') {
+        spot.frog = frog;
+        found = true;
+      }
+
+      return spot;
+    });
+
+    this.setState({
+      spots: newSpots
+    });
   }
 
   render() {
