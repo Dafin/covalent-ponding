@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View, Button} from 'react-native';
 import {chain, filter, map} from 'lodash';
 
-const Spot = ({frog, hasFrog, isCorrect, type}) => {
+const Spot = ({frog, hasFrog, isCorrect, type, handleOnPress}) => {
   return (
     <View style={styles.spot}>
       <Button
-        onPress={() => alert(`I am: ${frog}`)}
+        onPress={handleOnPress}
         title={frog || ''}
         color="#841584"
       />
@@ -55,12 +55,16 @@ export default class App extends Component {
         }
       ]
     };
+
+    this.handleOnPress = this.handleOnPress.bind(this);
+  }
+
+  handleOnPress() {
+    alert(this.state.spots.length);
   }
 
   render() {
     const { spots } = this.state;
-
-    console.log(spots);
 
     return (
       <View style={styles.container}>
@@ -74,6 +78,7 @@ export default class App extends Component {
                 frog={frog}
                 hasFrog={hasFrog}
                 isCorrect={isCorrect}
+                handleOnPress={this.handleOnPress}
                 type={type}
               />
             ))
@@ -90,6 +95,7 @@ export default class App extends Component {
                 frog={frog}
                 hasFrog={hasFrog}
                 isCorrect={isCorrect}
+                handleOnPress={this.handleOnPress}
                 type={type}
               />
             ))
@@ -100,12 +106,6 @@ export default class App extends Component {
     );
   }
 }
-
-         // <FrogSpot letter="p" hasFrog={true} isOnBank={true} />
-         //  <FrogSpot letter="e" hasFrog={true} isOnBank={true} />
-         //  <FrogSpot letter="n" hasFrog={true} isOnBank={true} />
-
-
 
 const styles = StyleSheet.create({
   container: {
