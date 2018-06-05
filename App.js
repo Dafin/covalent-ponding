@@ -1,34 +1,35 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Button } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
+const FrogSpot = (props) => {
+  const {letter, hasFrog, isOnBank} = props;
 
-// Pre ES6...
-// var FrogSpot = function(props) {
-//   return (
-//     <Button
-//       onPress={function() { alert('hello ' + props.letter) }}
-//       title={props.letter}
-//       color="#841584"
-//     />
-//   );
-// };
-
-const FrogSpot = ({letter}) => (
-  <Button
-    onPress={() => alert(`hello ${letter}`)}
-    title={letter}
-    color="#841584"
-  />
-);
+  return (
+    <View style={styles.spot}>
+      <Button
+        onPress={() => alert(`I am: ${letter}`)}
+        title={letter}
+        color="#841584"
+      />
+    </View>
+  );
+};
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <FrogSpot letter="p" />
-        <FrogSpot letter="e" />
-        <FrogSpot letter="n" />
+        <View style={styles.pond}>
+          <FrogSpot letter="p" hasFrog={false} isOnBank={false} />
+          <FrogSpot letter="e" hasFrog={false} isOnBank={false} />
+          <FrogSpot letter="n" hasFrog={false} isOnBank={false} />
+        </View>
+
+        <View style={styles.bank}>
+          <FrogSpot letter="p" hasFrog={true} isOnBank={true} />
+          <FrogSpot letter="e" hasFrog={true} isOnBank={true} />
+          <FrogSpot letter="n" hasFrog={true} isOnBank={true} />
+        </View>
       </View>
     );
   }
@@ -37,8 +38,19 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'column',
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  pond: {
+    flexDirection: 'row'
+  },
+  bank: {
+    flexDirection: 'row'
+  },
+  spot: {
+    borderWidth: 1,
+    margin: 1
+  }
 });
