@@ -1,17 +1,15 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Button} from 'react-native';
+import {StyleSheet, Text, View, Button, TouchableOpacity} from 'react-native';
 import {chain, find, filter, map} from 'lodash';
 
 const WaterLilly = (isCorrect) => {
   return (
-    <View style={styles.waterlilly}>
-      <Text>Hi!</Text>;
-      <Button
+    <View style={styles.waterlilly}> 
+      <TouchableOpacity
         onPress={() => alert("Placeholder")}
-        title={'check'}
-        color="#841584"
-      />
-
+        color="#aaaaaa"
+      ><Text>Hiii</Text>
+        </TouchableOpacity>
     </View>
   );
 
@@ -171,7 +169,9 @@ const styles = StyleSheet.create({
     backgroundColor:'gray',
     minHeight: 50,
     alignSelf: 'flex-end',
-    minWidth: 50
+    minWidth: 50,
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 
 });
