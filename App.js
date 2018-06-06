@@ -2,6 +2,21 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View, Button} from 'react-native';
 import {chain, find, filter, map} from 'lodash';
 
+const WaterLilly = (isCorrect) => {
+  return (
+    <View style={styles.waterlilly}>
+      <Text>Hi!</Text>;
+      <Button
+        onPress={() => alert("Placeholder")}
+        title={'check'}
+        color="#841584"
+      />
+
+    </View>
+  );
+
+};
+
 const Spot = ({frog, hasFrog, isCorrect, type, handleOnPress}) => {
   return (
     <View style={styles.spot}>
@@ -92,6 +107,8 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
 
+        <WaterLilly />
+
         <View style={styles.pond}>
           { chain(spots)
             .filter(({type}) => type === 'pond')
@@ -149,5 +166,12 @@ const styles = StyleSheet.create({
     minHeight: 50,
     minWidth: 50,
     margin: 1
+  },
+  waterlilly: {
+    backgroundColor:'gray',
+    minHeight: 50,
+    alignSelf: 'flex-end',
+    minWidth: 50
   }
+
 });
