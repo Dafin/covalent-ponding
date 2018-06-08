@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Button, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, Button, TouchableOpacity, Image, ImageBackground} from 'react-native';
 import {chain, find, filter, map} from 'lodash';
 
 const WaterLilly = (isCorrect) => {
@@ -8,8 +8,9 @@ const WaterLilly = (isCorrect) => {
       <TouchableOpacity
         onPress={() => alert("Placeholder")}
         color="#aaaaaa"
-      ><Text>Hiii</Text>
-        </TouchableOpacity>
+      >
+        <Image source={require("./images/lily.png")}/>
+      </TouchableOpacity>
     </View>
   );
 
@@ -103,44 +104,50 @@ export default class App extends Component {
     const { spots } = this.state;
 
     return (
-      <View style={styles.container}>
+        <View style={styles.container}>
+        <ImageBackground
+          source={require("./images/lily.png")}
+          style ={styles.background}
+        />
 
-        <WaterLilly />
+          <WaterLilly />
 
-        <View style={styles.pond}>
-          { chain(spots)
-            .filter(({type}) => type === 'pond')
-            .map(({frog, hasFrog, isCorrect, type}, i) => (
-              <Spot
-                key={i}
-                frog={frog}
-                hasFrog={hasFrog}
-                isCorrect={isCorrect}
-                handleOnPress={this.handleOnPress}
-                type={type}
-              />
-            ))
-            .value()
-          }
+          <View style={styles.pond}>
+            { chain(spots)
+              .filter(({type}) => type === 'pond')
+              .map(({frog, hasFrog, isCorrect, type}, i) => (
+                <Spot
+                  key={i}
+                  frog={frog}
+                  hasFrog={hasFrog}
+                  isCorrect={isCorrect}
+                  handleOnPress={this.handleOnPress}
+                  type={type}
+                />
+              ))
+              .value()
+            }
+          </View>
+
+          <View style={styles.bank}>
+            { chain(spots)
+              .filter(({type}) => type === 'bank')
+              .map(({frog, hasFrog, isCorrect, type}, i) => (
+                <Spot
+                  key={i}
+                  frog={frog}
+                  hasFrog={hasFrog}
+                  isCorrect={isCorrect}
+                  handleOnPress={this.handleOnPress}
+                  type={type}
+                />
+              ))
+              .value()
+            }
+          </View>
+
         </View>
 
-        <View style={styles.bank}>
-          { chain(spots)
-            .filter(({type}) => type === 'bank')
-            .map(({frog, hasFrog, isCorrect, type}, i) => (
-              <Spot
-                key={i}
-                frog={frog}
-                hasFrog={hasFrog}
-                isCorrect={isCorrect}
-                handleOnPress={this.handleOnPress}
-                type={type}
-              />
-            ))
-            .value()
-          }
-        </View>
-      </View>
     );
   }
 }
@@ -149,29 +156,44 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: 'cyan',
+    height: 699,
+    width: 320
+
+  
+
   },
+  
   pond: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    backgroundColor: 'aqua'
+
   },
   bank: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    backgroundColor: 'yellow'
+
   },
   spot: {
     borderWidth: 1,
-    minHeight: 50,
-    minWidth: 50,
-    margin: 1
+    minHeight: 100,
+    minWidth: 100,
+    margin: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   waterlilly: {
-    backgroundColor:'gray',
     minHeight: 50,
     alignSelf: 'flex-end',
     minWidth: 50,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+  },
+  background: {
+    width: null,
+    height: null
   }
 
 });
