@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, Button, TouchableOpacity, Image, ImageBackground} from 'react-native';
 import {chain, find, filter, map} from 'lodash';
+import styles from './styles'
+
 
 const WaterLilly = (isCorrect) => {
   return (
@@ -22,7 +24,6 @@ const Spot = ({frog, hasFrog, isCorrect, type, handleOnPress}) => {
       <Button
         onPress={() => handleOnPress(frog)}
         title={frog || ''}
-        color="#841584"
       />
     </View>
   );
@@ -31,6 +32,7 @@ const Spot = ({frog, hasFrog, isCorrect, type, handleOnPress}) => {
 export default class App extends Component {
   constructor(props) {
     super(props);
+        Text.defaultProps.style = {fontFamily: 'ChalkboardSE-Bold' }
 
     this.state = {
       spots: [
@@ -105,10 +107,8 @@ export default class App extends Component {
 
     return (
         <View style={styles.container}>
-        <ImageBackground
-          source={require("./images/lily.png")}
-          style ={styles.background}
-        />
+
+        <Text>Welcome to the pond!</Text>
 
           <WaterLilly />
 
@@ -151,49 +151,3 @@ export default class App extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'cyan',
-    height: 699,
-    width: 320
-
-  
-
-  },
-  
-  pond: {
-    flexDirection: 'row',
-    backgroundColor: 'aqua'
-
-  },
-  bank: {
-    flexDirection: 'row',
-    backgroundColor: 'yellow'
-
-  },
-  spot: {
-    borderWidth: 1,
-    minHeight: 100,
-    minWidth: 100,
-    margin: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  waterlilly: {
-    minHeight: 50,
-    alignSelf: 'flex-end',
-    minWidth: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  background: {
-    width: null,
-    height: null
-  }
-
-});
