@@ -39,6 +39,13 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  fish: {
+    minHeight: 100,
+    minWidth: 100,
+    alignSelf: 'flex-start',
+
+  },
+
   background: {
     width: null,
     height: null

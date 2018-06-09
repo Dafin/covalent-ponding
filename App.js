@@ -4,6 +4,7 @@ import {chain, find, filter, map} from 'lodash';
 import styles from './styles'
 
 import WaterLilly from './components/water-lily'
+import Fish from './components/fish'
 
 
 
@@ -98,7 +99,7 @@ export default class App extends Component {
         <View style={styles.container}>
 
         <Text>Welcome to the pond!</Text>
-
+<Fish />
           <WaterLilly />
 
           <View style={styles.pond}>
