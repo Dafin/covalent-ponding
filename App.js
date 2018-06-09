@@ -3,20 +3,9 @@ import {StyleSheet, Text, View, Button, TouchableOpacity, Image, ImageBackground
 import {chain, find, filter, map} from 'lodash';
 import styles from './styles'
 
+import WaterLilly from './components/water-lily'
 
-const WaterLilly = (isCorrect) => {
-  return (
-    <View style={styles.waterlilly}> 
-      <TouchableOpacity
-        onPress={() => alert("Placeholder")}
-        color="#aaaaaa"
-      >
-        <Image source={require("./images/lily.png")}/>
-      </TouchableOpacity>
-    </View>
-  );
 
-};
 
 const Spot = ({frog, hasFrog, isCorrect, type, handleOnPress}) => {
   return (
