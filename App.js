@@ -5,6 +5,8 @@ import styles from './styles'
 
 import WaterLilly from './components/water-lily'
 import Fish from './components/fish'
+import initialState from './utils/initialState'
+
 
 
 
@@ -18,41 +20,6 @@ const Spot = ({frog, hasFrog, isCorrect, type, handleOnPress}) => {
     </View>
   );
 };
-
-const initialState = {
-  spots: [
-    {
-      frog: 'e',
-      type: 'bank'
-    },
-    {
-      frog: 'p',
-      type: 'bank'
-    },
-    {
-      frog: 'n',
-      type: 'bank'
-    },
-    {
-      frog: null,
-      isCorrect: 'p',
-      type: 'pond'
-    },
-    {
-      frog: null,
-      isCorrect: 'e',
-      type: 'pond'
-    },
-    {
-      frog: null,
-      isCorrect: 'n',
-      type: 'pond'
-    }
-  ]
-};
-
-
-
 
 
 
