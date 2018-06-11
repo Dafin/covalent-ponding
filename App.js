@@ -1,27 +1,13 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, Button, TouchableOpacity, Image, ImageBackground} from 'react-native';
-import {chain, find, filter, map} from 'lodash';
+import {chain, find, filter, map, cloneDeep} from 'lodash';
 import styles from './styles'
 
-import WaterLilly from './components/water-lily'
+import WaterLilly from './components/waterLily'
 import Fish from './components/fish'
 import initialState from './utils/initialState'
 import Spot from './components/spot'
-
-
-
-
-// const Spot = ({frog, hasFrog, isCorrect, type, handleOnPress}) => {
-//   return (
-//     <View style={styles.spot}>
-//       <Button
-//         onPress={() => handleOnPress(frog)}
-//         title={frog || ''}
-//       />
-//     </View>
-//   );
-// };
-
+import ResetButton from './utils/resetButton'
 
 
 export default class App extends Component {
@@ -29,8 +15,13 @@ export default class App extends Component {
     super(props);
         Text.defaultProps.style = {fontFamily: 'ChalkboardSE-Bold' }
 
-    this.state = initialState;
+    this.state = cloneDeep(initialState);
     this.handleOnPress = this.handleOnPress.bind(this);
+    this.handleReset = this.handleReset.bind(this);
+  }
+
+  handleReset() {
+    this.setState(cloneDeep(initialState));
   }
 
   handleOnPress(frog) {
@@ -110,6 +101,7 @@ export default class App extends Component {
             }
           </View>
 
+          <ResetButton handleReset={this.handleReset} />
         </View>
 
     );
