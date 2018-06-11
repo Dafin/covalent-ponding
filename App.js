@@ -19,43 +19,49 @@ const Spot = ({frog, hasFrog, isCorrect, type, handleOnPress}) => {
   );
 };
 
+const initialState = {
+  spots: [
+    {
+      frog: 'e',
+      type: 'bank'
+    },
+    {
+      frog: 'p',
+      type: 'bank'
+    },
+    {
+      frog: 'n',
+      type: 'bank'
+    },
+    {
+      frog: null,
+      isCorrect: 'p',
+      type: 'pond'
+    },
+    {
+      frog: null,
+      isCorrect: 'e',
+      type: 'pond'
+    },
+    {
+      frog: null,
+      isCorrect: 'n',
+      type: 'pond'
+    }
+  ]
+};
+
+
+
+
+
+
 export default class App extends Component {
   constructor(props) {
     super(props);
         Text.defaultProps.style = {fontFamily: 'ChalkboardSE-Bold' }
 
-    this.state = {
-      spots: [
-        {
-          frog: 'e',
-          type: 'bank'
-        },
-        {
-          frog: 'p',
-          type: 'bank'
-        },
-        {
-          frog: 'n',
-          type: 'bank'
-        },
-        {
-          frog: null,
-          isCorrect: 'p',
-          type: 'pond'
-        },
-        {
-          frog: null,
-          isCorrect: 'e',
-          type: 'pond'
-        },
-        {
-          frog: null,
-          isCorrect: 'n',
-          type: 'pond'
-        }
-      ]
-    };
-
+    this.state = initialState;
     this.handleOnPress = this.handleOnPress.bind(this);
   }
 
