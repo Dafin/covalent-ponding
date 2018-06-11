@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, Button, TouchableOpacity, Image, ImageBackground} from 'react-native';
-import {chain, find, filter, map, cloneDeep} from 'lodash';
+import {each, chain, find, filter, map, cloneDeep} from 'lodash';
 import styles from './styles'
 
 import WaterLilly from './components/waterLily'
@@ -13,16 +13,34 @@ import ResetButton from './utils/resetButton'
 export default class App extends Component {
   constructor(props) {
     super(props);
-    
+
     Text.defaultProps.style = { fontFamily: 'ChalkboardSE-Bold' }
 
     this.state = cloneDeep(initialState);
     this.handleOnPress = this.handleOnPress.bind(this);
     this.handleReset = this.handleReset.bind(this);
+    this.handleWin = this.handleWin.bind(this);
   }
 
   handleReset() {
     this.setState(cloneDeep(initialState));
+  }
+
+  handleWin() {
+    let score = 0;
+    const pondSpots = filter(this.state.spots, spot => spot.type === 'pond');
+
+    each(pondSpots, (spot) => {
+      if (spot.frog === spot.isCorrect) {
+        score += 1;
+      }
+    });
+
+    if (score === pondSpots.length) {
+      alert('Yay! Yes, you won!');
+    } else {
+      alert('Oh...');
+    }
   }
 
   handleOnPress(frog) {
@@ -66,7 +84,7 @@ export default class App extends Component {
 
         <Text>Welcome to the pond!</Text>
         <Fish />
-        <WaterLilly />
+        <WaterLilly handleWin={this.handleWin} />
 
         <View style={styles.pond}>
           { chain(spots)

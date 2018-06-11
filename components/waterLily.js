@@ -8,7 +8,7 @@ export default class WaterLilly extends Component {
     return (
       <View style={styles.waterlilly}> 
         <TouchableOpacity
-          onPress={() => alert("Placeholder")}
+          onPress={this.props.handleWin}
           color="#aaaaaa"
         >
           <Image source={require("../images/lily.png")}/>
