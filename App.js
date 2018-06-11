@@ -6,20 +6,21 @@ import styles from './styles'
 import WaterLilly from './components/water-lily'
 import Fish from './components/fish'
 import initialState from './utils/initialState'
+import Spot from './components/spot'
 
 
 
 
-const Spot = ({frog, hasFrog, isCorrect, type, handleOnPress}) => {
-  return (
-    <View style={styles.spot}>
-      <Button
-        onPress={() => handleOnPress(frog)}
-        title={frog || ''}
-      />
-    </View>
-  );
-};
+// const Spot = ({frog, hasFrog, isCorrect, type, handleOnPress}) => {
+//   return (
+//     <View style={styles.spot}>
+//       <Button
+//         onPress={() => handleOnPress(frog)}
+//         title={frog || ''}
+//       />
+//     </View>
+//   );
+// };
 
 
 
