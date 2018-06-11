@@ -13,7 +13,8 @@ import ResetButton from './utils/resetButton'
 export default class App extends Component {
   constructor(props) {
     super(props);
-        Text.defaultProps.style = {fontFamily: 'ChalkboardSE-Bold' }
+    
+    Text.defaultProps.style = { fontFamily: 'ChalkboardSE-Bold' }
 
     this.state = cloneDeep(initialState);
     this.handleOnPress = this.handleOnPress.bind(this);
@@ -61,49 +62,48 @@ export default class App extends Component {
     const { spots } = this.state;
 
     return (
-        <View style={styles.container}>
+      <View style={styles.container}>
 
         <Text>Welcome to the pond!</Text>
-<Fish />
-          <WaterLilly />
+        <Fish />
+        <WaterLilly />
 
-          <View style={styles.pond}>
-            { chain(spots)
-              .filter(({type}) => type === 'pond')
-              .map(({frog, hasFrog, isCorrect, type}, i) => (
-                <Spot
-                  key={i}
-                  frog={frog}
-                  hasFrog={hasFrog}
-                  isCorrect={isCorrect}
-                  handleOnPress={this.handleOnPress}
-                  type={type}
-                />
-              ))
-              .value()
-            }
-          </View>
-
-          <View style={styles.bank}>
-            { chain(spots)
-              .filter(({type}) => type === 'bank')
-              .map(({frog, hasFrog, isCorrect, type}, i) => (
-                <Spot
-                  key={i}
-                  frog={frog}
-                  hasFrog={hasFrog}
-                  isCorrect={isCorrect}
-                  handleOnPress={this.handleOnPress}
-                  type={type}
-                />
-              ))
-              .value()
-            }
-          </View>
-
-          <ResetButton handleReset={this.handleReset} />
+        <View style={styles.pond}>
+          { chain(spots)
+            .filter(({type}) => type === 'pond')
+            .map(({frog, hasFrog, isCorrect, type}, i) => (
+              <Spot
+                key={i}
+                frog={frog}
+                hasFrog={hasFrog}
+                isCorrect={isCorrect}
+                handleOnPress={this.handleOnPress}
+                type={type}
+              />
+            ))
+            .value()
+          }
         </View>
 
+        <View style={styles.bank}>
+          { chain(spots)
+            .filter(({type}) => type === 'bank')
+            .map(({frog, hasFrog, isCorrect, type}, i) => (
+              <Spot
+                key={i}
+                frog={frog}
+                hasFrog={hasFrog}
+                isCorrect={isCorrect}
+                handleOnPress={this.handleOnPress}
+                type={type}
+              />
+            ))
+            .value()
+          }
+        </View>
+
+        <ResetButton handleReset={this.handleReset} />
+      </View>
     );
   }
 }
