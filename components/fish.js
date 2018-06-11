@@ -5,22 +5,31 @@ import styles from '../styles'
 
 
 export default class Fish extends Component {
+  constructor(props) {
+    super(props);
+    this.handlePress = this.handlePress.bind(this);
+  }
+
+  handlePress() {
+    return async () => {
+      const source = require('../audio/uk-PIN.mp3');
+      
+      try {
+        await Audio.setIsEnabledAsync(true);
+        const sound = new Audio.Sound();
+        await sound.loadAsync(source);
+        await sound.playAsync(); 
+      } catch(error) {
+        console.error(error);
+      }
+    }
+  }
+
   render() {
     return (
       <View style={styles.fish}> 
         <TouchableOpacity
-          onPress={async () => {
-            const source = require('../audio/uk-PIN.mp3');
-            
-            try {
-              await Audio.setIsEnabledAsync(true);
-              const sound = new Audio.Sound();
-              await sound.loadAsync(source);
-              await sound.playAsync(); 
-            } catch(error) {
-              console.error(error);
-            }
-          }}
+          onPress={this.handlePress()}
           color="#aaaaaa"
         >
           <Image source={require("../images/fish.png")}/>
