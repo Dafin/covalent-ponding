@@ -82,6 +82,11 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
 
+        <ImageBackground style={styles.imgBackground}
+                         resizeMode='repeat'
+                         resizeMthod='scale'
+                         source={require("./images/waterAH.gif")}>
+
         <Text>Welcome to the pond!</Text>
         <Fish />
         <WaterLilly handleWin={this.handleWin} />
@@ -121,6 +126,8 @@ export default class App extends Component {
         </View>
 
         <ResetButton handleReset={this.handleReset} />
+        </ImageBackground>
+
       </View>
     );
   }
