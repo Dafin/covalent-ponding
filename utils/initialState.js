@@ -1,7 +1,7 @@
 const initialState = {
   spots: [
     {
-      frog: 'e',
+      frog: 'i',
       type: 'bank'
     },
     {
