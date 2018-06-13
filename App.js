@@ -87,7 +87,7 @@ export default class App extends Component {
                          resizeMthod='scale'
                          source={require("./images/waterAH.gif")}>
 
-        <Text>Welcome to the pond!</Text>
+        <Text style={styles.heading}>Covalent Ponding v0.1</Text>
         <Fish />
         <WaterLilly handleWin={this.handleWin} />
 
