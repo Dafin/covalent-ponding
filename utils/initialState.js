@@ -19,7 +19,7 @@ const initialState = {
     },
     {
       frog: null,
-      isCorrect: 'e',
+      isCorrect: 'i',
       type: 'pond'
     },
     {
